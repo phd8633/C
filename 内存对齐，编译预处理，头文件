@@ -1,0 +1,35 @@
+#if !defined (PACKED)
+#define PACKED __attribute__((aligned(1),packed))
+#endif
+
+#if defined (__MSDOS__) || defined (_MSC_VER)
+#undef PACKED
+#define PACKED
+#endif
+
+struct packed-data
+{
+	unsigned a:2;
+	unsigned b:6;
+	unsigned c:4;
+	unsigned d:4;
+	int i;
+}data;
+
+struct scsi_nl_host_vendor_msg {
+	struct scsi_nl_hdr snlh;		
+	uint64_t vendor_id;
+	uint16_t host_no;
+	uint16_t vmsg_datalen;
+} __attribute__((aligned(sizeof(uint64_t))));
+
+
+
+#define INIT_SCSI_NL_HDR(hdr, t, mtype, mlen)	\
+	{					\
+	(hdr)->version = SCSI_NL_VERSION;	\
+	(hdr)->transport = t;			\
+	(hdr)->magic = SCSI_NL_MAGIC;		\
+	(hdr)->msgtype = mtype;			\
+	(hdr)->msglen = mlen;			\
+	}
