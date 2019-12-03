@@ -1,0 +1,29 @@
+#include "stdio.h"
+#include "string.h"
+
+int add(int a,int b)
+{
+	return a+b;
+}
+
+void main()
+{
+/*	定义一个函数指针FuncName
+	int (*FuncName)(int a,int b);
+	FuncName = add;
+	printf("%d\n",(*FuncName)(1,2));
+*/
+
+/*	定义一个类型的函数，这个类型的返回值为int，输入参数为（int，int）
+	typedef int FuncName(int a,int b);
+	FuncName * p = add;
+	printf("%d",p(1,2));
+*/
+
+/*	定义一类指向函数的指针（函数指针），
+	typedef int (*FuncName)(int ,int );
+	FuncName p = add;
+	printf("%d",p(1,2));
+*/
+
+}
