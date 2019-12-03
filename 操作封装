@@ -1,0 +1,26 @@
+#include "stdio.h"
+#include "string.h"
+
+struct operate{
+	int (*a)(int ,int);
+	int (*d)(int ,int);
+};
+
+int add(int a,int b)
+{
+	return a+b;
+}
+
+int dec(int a,int b)
+{
+	return a-b;
+}
+
+void main()
+{
+
+	struct operate opt = { add,dec};
+	printf("%d\n",opt.a(1,2));
+	printf("%d\n",opt.d(1,2));
+
+}
