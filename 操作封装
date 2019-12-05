@@ -24,3 +24,67 @@ void main()
 	printf("%d\n",opt.d(1,2));
 
 }
+
+
+///////////////////////////////////////////////////////////
+#include<stdio.h>
+#include<stdlib.h>
+
+int ArrRowSort(int size,int *ArrRow);
+
+struct operation {
+	int (*ArrRowSort)(int size,int *ArrRow);
+};
+
+int main()
+{
+/*  define ************/
+	int i,j;
+
+	int size;
+	int * ArrRow;
+	int * RowSort;
+
+	struct operation ops={ArrRowSort};
+
+/* get input  */
+	scanf("%d",&size);
+	ArrRow = (int *)malloc(sizeof(int)*size);
+	RowSort = (int *)malloc(sizeof(int)*size);	
+	
+	for(i = 0;i<size;i++)
+	{
+		scanf("%d",ArrRow+i);
+		*(RowSort+i) = *(ArrRow+i);
+	}
+
+/*  sort ***************/
+	ops.ArrRowSort(size,RowSort);
+	for(i = 0;i<size;i++)	
+		printf("%d ",*(RowSort+i));
+
+/*  free****************/
+	free(ArrRow);
+	free(RowSort);
+}
+
+int ArrRowSort(int size,int *ArrRow)
+{
+	int i,j;
+
+	for(i=0;i<size;i++)
+	{
+		for(j = i; j<size;j++)
+		{
+			if(*(ArrRow+i)>*(ArrRow+j))
+			{
+				int temp = *(ArrRow+i);
+				*(ArrRow+i) = *(ArrRow+j);
+				*(ArrRow+j) = temp;
+			}
+		}
+	
+	}
+}
+
+
