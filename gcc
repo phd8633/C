@@ -1,0 +1,8 @@
+gcc pthread.c -o pthread -lpthread      //动态链接
+gcc -E cal.c -o cal.i                   // 编译预处理
+gcc -S cal.i -o cal.s                   // 汇编
+gcc -c cal.s                            //生成cal.o 链接文件
+gcc cal.o                               //生成a.out可执行二进制文件
+ar -rc ../MyLib.a cal.o                 //将链接文件打包成静态库
+gcc  main.c -o main.out -l ../MyLib.a   //链接静态库
+gcc main.c header.o -o main.out         //header.o 为main.c的头文件
